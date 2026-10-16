@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>REGYM — Фітнес у Дніпрі</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0b;
+            color: white;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .nav {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #e60000;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e60000;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=80")
+                center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            padding-top: 70px;
+        }
+
+        .hero small {
+            color: #e60000;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            line-height: 0.95;
+            margin: 20px 0;
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: #e60000;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e60000;
+            padding: 14px 28px;
+            font-weight: bold;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            color: black;
+        }
+
+        /* SECTIONS */
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            margin-bottom: 45px;
+        }
+
+        .section-title span {
+            color: #e60000;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            margin: 10px 0;
+        }
+
+        .section-title p {
+            color: #999;
+        }
+
+        /* CLUBS */
+
+        .clubs {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .club {
+            min-height: 260px;
+            position: relative;
+            overflow: hidden;
+            background: #151515;
+            cursor: pointer;
+        }
+
+        .club img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            transition: 0.5s;
+        }
+
+        .club:hover img {
+            transform: scale(1.08);
+        }
+
+        .club-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .club h3 {
+            font-size: 23px;
+        }
+
+        .club p {
+            color: #ccc;
+            font-size: 13px;
+        }
+
+        /* INFO */
+
+        .info-box {
+            background: #151515;
+            padding: 35px;
+            border-left: 4px solid #e60000;
+        }
+
+        .info-box h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .info-box p {
+            color: #bbb;
+            margin-bottom: 8px;
+        }
+
+        /* PRICES */
+
+        .prices {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .price-card {
+            background: #151515;
+            padding: 35px;
+            text-align: center;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+
+        .price-card:hover {
+            border-color: #e60000;
+            transform: translateY(-5px);
+        }
+
+        .price-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 40px;
+            font-weight: bold;
+            color: #e60000;
+        }
+
+        .price-card p {
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        /* PERSONAL TRAINING */
+
+        .trainers {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .trainer {
+            background: #151515;
+            padding: 30px;
+            border-top: 3px solid #e60000;
+        }
+
+        .trainer h3 {
+            font-size: 20px;
+        }
+
+        .trainer .price {
+            font-size: 32px;
+            margin-top: 15px;
+        }
+
+        /* GROUP TRAININGS */
+
+        .directions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .direction-card {
+            background: #151515;
+            padding: 30px;
+            min-height: 190px;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+
+        .direction-card:hover {
+            border-color: #e60000;
+            transform: translateY(-5px);
+        }
+
+        .direction-card h3 {
+            color: #e60000;
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .direction-card p {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* WHY REGYM */
+
+        .why {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .why-card {
+            background: #151515;
+            padding: 30px;
+        }
+
+        .why-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            color: #999;
+        }
+
+        /* CTA */
+
+        .cta {
+            background: #e60000;
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            margin-bottom: 25px;
+        }
+
+        .cta .btn {
+            background: black;
+        }
+
+        .cta .btn:hover {
+            background: white;
+            color: black;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #050505;
+            padding: 35px 0;
+            text-align: center;
+            color: #777;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .clubs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .prices {
+                grid-template-columns: 1fr;
+            }
+
+            .trainers {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .directions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title h2 {
+                font-size: 35px;
+            }
+
+            .clubs {
+                grid-template-columns: 1fr;
+            }
+
+            .trainers {
+                grid-template-columns: 1fr;
+            }
+
+            .directions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="container nav">
+
+        <div class="logo">
+            RE<span>GYM</span>
+        </div>
+
+        <nav>
+            <a href="#clubs">Клуби</a>
+            <a href="#prices">Ціни</a>
+            <a href="#trainers">Тренери</a>
+            <a href="#directions">Тренування</a>
+            <a href="#contact">Контакти</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <small>FITNESS CLUBS • DNIPRO</small>
+
+            <h1>
+                ТВОЯ<br>
+                <span>СИЛА.</span>
+            </h1>
+
+            <p>
+                REGYM — мережа сучасних фітнес-клубів у Дніпрі.
+                Тренуйся, розвивайся та ставай сильнішим.
+            </p>
+
+            <a href="#clubs" class="btn">
+                ОБРАТИ КЛУБ
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CLUBS -->
+
+<section class="section" id="clubs">
+
+    <div class="container">
+
+        <div class="section-title">
+            <span>REGYM DNIPRO</span>
+            <h2>Наші клуби</h2>
+            <p>Обирай зручну локацію та тренуйся поруч із домом.</p>
+        </div>
+
+
+        <div class="clubs">
+
+            <div class="club">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=80">
+
+                <div class="club-overlay">
+                    <div>
+                        <h3>APPOLO</h3>
+                        <p>вул. Незалежності, 36</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="club">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80">
+
+                <div class="club-overlay">
+                    <div>
+                        <h3>STROOM</h3>
+                        <p>вул. В'ячеслава Липинського, 4</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="club">
+                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80">
+
+                <div class="club-overlay">
+                    <div>
+                        <h3>MARSHALL</h3>
+                        <p>Набережна Перемоги, 128</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="club">
+                <img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=800&q=80">
+
+                <div class="club-overlay">
+                    <div>
+                        <h3>DAFI</h3>
+                        <p>бул. Зоряний, 1А</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="club">
+                <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=800&q=80">
+
+                <div class="club-overlay">
+                    <div>
+                        <h3>KINO</h3>
+                        <p>просп. Слобожанський, 86</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CLUB INFO -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-title">
+            <span>ІНФОРМАЦІЯ</span>
+            <h2>REGYM поруч</h2>
+        </div>
+
+        <div class="info-box">
+
+            <h3>Тренуйся тоді, коли зручно</h3>
+
+            <p>📍 5 клубів у різних районах Дніпра</p>
+
+            <p>🕐 Графік роботи: 06:30 — 22:00</p>
+
+            <p>🏋️ Сучасне обладнання та різні формати тренувань</p>
+
+            <p>👤 Персональні та групові тренування</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRICES -->
+
+<section class="section" id="prices">
+
+    <div class="container">
+
+        <div class="section-title">
+            <span>АБОНЕМЕНТИ</span>
+            <h2>Ціни</h2>
+            <p>Прості умови без зайвих складнощів.</p>
+        </div>
+
+
+        <div class="prices">
+
+            <div class="price-card">
+
+                <h3>Місячний абонемент</h3>
+
+                <div class="price">
+                    2150 ₴
+                </div>
+
+                <p>
+                    Безлімітне відвідування клубу
+                </p>
+
+            </div>
+
+
+            <div class="price-card">
+
+                <h3>Групове тренування</h3>
+
+                <div class="price">
+                    350 ₴
+                </div>
+
+                <p>
+                    Одноразове відвідування
+                </p>
+
+            </div>
+
+
+            <div class="price-card">
+
+                <h3>Персональне тренування</h3>
+
+                <div class="price">
+                    від 500 ₴
+                </div>
+
+                <p>
+                    Індивідуальна робота з тренером
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PERSONAL TRAINING -->
+
+<section class="section" id="trainers">
+
+    <div class="container">
+
+        <div class="section-title">
+            <span>PERSONAL TRAINING</span>
+            <h2>Персональні тренування</h2>
+            <p>Обери тренера відповідно до свого рівня та цілей.</p>
+        </div>
+
+
+        <div class="trainers">
+
+            <div class="trainer">
+
+                <h3>BASE</h3>
+
+                <p>
+                    Для тих, хто хоче почати тренування
+                    та отримати базові знання.
+                </p>
+
+                <div class="price">
+                    500 ₴
+                </div>
+
+            </div>
+
+
+            <div class="trainer">
+
+                <h3>BASE PRO</h3>
+
+                <p>
+                    Більше уваги до техніки та індивідуальної програми.
+                </p>
+
+                <div class="price">
+                    700 ₴
+                </div>
+
+            </div>
+
+
+            <div class="trainer">
+
+                <h3>MASTER</h3>
+
+                <p>
+                    Тренування з досвідченим тренером
+                    та персональним підходом.
+                </p>
+
+                <div class="price">
+                    800 ₴
+                </div>
+
+            </div>
+
+
+            <div class="trainer">
+
+                <h3>MASTER PRO</h3>
+
+                <p>
+                    Максимально персоналізований підхід
+                    та робота над конкретними цілями.
+                </p>
+
+                <div class="price">
+                    900 ₴
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GROUP TRAININGS -->
+
+<section class="section" id="directions">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>GROUP TRAINING</span>
+
+            <h2>Групові тренування</h2>
+
+            <p>
+                Обирай тренування відповідно до своїх цілей.
+            </p>
+
+        </div>
+
+
+        <div class="directions-grid">
+
+
+            <div class="direction-card">
+
+                <h3>GYM</h3>
+
+                <p>
+                    Силові тренування для розвитку м’язів
+                    та покращення фізичної форми.
+                </p>
+
+            </div>
+
+
+            <div class="direction-card">
+
+                <h3>STRETCHING</h3>
+
+                <p>
+                    Вправи для розвитку гнучкості,
+                    мобільності та розслаблення м’язів.
+                </p>
+
+            </div>
+
+
+            <div class="direction-card">
+
+                <h3>PILATES</h3>
+
+                <p>
+                    Тренування для зміцнення м’язів,
+                    покращення постави та контролю тіла.
+                </p>
+
+            </div>
+
+
+            <div class="direction-card">
+
+                <h3>YOGA</h3>
+
+                <p>
+                    Поєднання вправ на гнучкість,
+                    баланс, дихання та розслаблення.
+                </p>
+
+            </div>
+
+
+            <div class="direction-card">
+
+                <h3>TABATA</h3>
+
+                <p>
+                    Інтенсивне інтервальне тренування
+                    з короткими періодами роботи та відпочинку.
+                </p>
+
+            </div>
+
+
+            <div class="direction-card">
+
+                <h3>MOBILITY</h3>
+
+                <p>
+                    Вправи для покращення рухливості
+                    суглобів та якості рухів.
+                </p>
+
+            </div>
+
+
+            <div class="direction-card">
+
+                <h3>FUNCTIONAL</h3>
+
+                <p>
+                    Функціональні вправи для розвитку
+                    сили, витривалості та координації.
+                </p>
+
+            </div>
+
+
+            <div class="direction-card">
+
+                <h3>PERSONAL</h3>
+
+                <p>
+                    Індивідуальне тренування з програмою
+                    відповідно до ваших цілей.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div style="
+            text-align:center;
+            margin-top:35px;
+            font-size:18px;
+        ">
+
+            <strong>
+                Вартість групового тренування — 350 ₴
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WHY REGYM -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>WHY REGYM?</span>
+
+            <h2>Чому REGYM?</h2>
+
+        </div>
+
+
+        <div class="why">
+
+
+            <div class="why-card">
+
+                <h3>5 клубів</h3>
+
+                <p>
+                    Обирай зручну локацію
+                    у різних районах Дніпра.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <h3>06:30 — 22:00</h3>
+
+                <p>
+                    Тренуйся вранці,
+                    вдень або після роботи.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <h3>Різні формати</h3>
+
+                <p>
+                    Групові, персональні та
+                    самостійні тренування.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta" id="contact">
+
+    <div class="container">
+
+        <h2>ГОТОВИЙ ТРЕНУВАТИСЯ?</h2>
+
+        <p>
+            Обирай свій клуб та починай вже сьогодні.
+        </p>
+
+        <a
+            href="https://www.instagram.com/regym.hub/"
+            target="_blank"
+            class="btn"
+        >
+            REGYM В INSTAGRAM
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            <strong>REGYM</strong> — фітнес у Дніпрі
+        </p>
+
+        <p>
+            © 2026 REGYM
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
